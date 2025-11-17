@@ -41,17 +41,21 @@ MongoDB Atlas is a cloud database service that comes pre-configured as a replica
    - Click "Connect" on your cluster
    - Choose "Connect your application"
    - Copy the connection string
-   - It looks like: `mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority`
+   - It looks like: `mongodb+srv://<username>:<password>@cluster.mongodb.net/?retryWrites=true&w=majority`
+   
+   ⚠️ **Note**: The connection string will have `<username>` and `<password>` placeholders that you need to replace with your actual credentials.
 
 6. **Update Your .env File**
    - In `api/.env`, update `DATABASE_URL`:
    ```env
-   DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/realestate?retryWrites=true&w=majority
+   DATABASE_URL=mongodb+srv://your_username:your_password@your_cluster.mongodb.net/realestate?retryWrites=true&w=majority
    JWT_SECRET_KEY=your_jwt_secret_key_here
    NODE_ENV=development
    ```
-   - Replace `username`, `password`, and `cluster.mongodb.net` with your actual values
+   - Replace `your_username`, `your_password`, and `your_cluster` with your actual MongoDB Atlas values
    - Add `/realestate` before the `?` to specify the database name
+   - Generate a secure random string for `JWT_SECRET_KEY` (you can use: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`)
+   - ⚠️ **Never commit your `.env` file to version control**
 
 7. **Generate Prisma Client**
    ```bash

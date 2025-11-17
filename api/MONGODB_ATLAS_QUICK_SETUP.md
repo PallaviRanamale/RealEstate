@@ -41,8 +41,10 @@
 3. Select **"Node.js"** as the driver and version **"5.5 or later"**
 4. Copy the connection string - it looks like:
    ```
-   mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+   mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
    ```
+   
+   ⚠️ **Note**: The connection string will have `<username>` and `<password>` placeholders that you need to replace.
 
 ### 6. Update Your Connection String
 
@@ -53,18 +55,25 @@ Replace these parts in the connection string:
 
 **Final connection string should look like:**
 ```
-mongodb+srv://realestateuser:yourpassword@cluster0.xxxxx.mongodb.net/realestate?retryWrites=true&w=majority
+mongodb+srv://your_username:your_password@cluster0.xxxxx.mongodb.net/realestate?retryWrites=true&w=majority
 ```
+
+⚠️ **Important**: Replace `your_username` and `your_password` with your actual MongoDB Atlas credentials.
 
 ### 7. Update Your .env File
 
 Update `api/.env` with your MongoDB Atlas connection string:
 
 ```env
-DATABASE_URL=mongodb+srv://realestateuser:yourpassword@cluster0.xxxxx.mongodb.net/realestate?retryWrites=true&w=majority
-JWT_SECRET_KEY=4af70767da935941e905a1dd4a055f76593243f1298b52b92ecf4594fee7303e5c7ae4ade0d5992ebebcc22d2d7bcc64e56f21c64658a4c9d5ee890f58a393a6
+DATABASE_URL=mongodb+srv://your_username:your_password@cluster0.xxxxx.mongodb.net/realestate?retryWrites=true&w=majority
+JWT_SECRET_KEY=your_jwt_secret_key_here
 NODE_ENV=development
 ```
+
+⚠️ **Security Note**: 
+- Replace `your_username` and `your_password` with your actual MongoDB Atlas credentials
+- Generate a secure random string for `JWT_SECRET_KEY` (you can use: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`)
+- Never commit your `.env` file to version control
 
 ### 8. Generate Prisma Client and Push Schema
 

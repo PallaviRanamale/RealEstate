@@ -54,10 +54,12 @@ After completing the steps above:
 
 2. **Check your .env file:**
    ```env
-   DATABASE_URL="mongodb+srv://pallaviranamale_db_user:w50av11D0hujHBDn@realestateuser.n5bt5qd.mongodb.net/realestate?retryWrites=true&w=majority"
-   JWT_SECRET_KEY=4af70767da935941e905a1dd4a055f76593243f1298b52b92ecf4594fee7303e5c7ae4ade0d5992ebebcc22d2d7bcc64e56f21c64658a4c9d5ee890f58a393a6
+   DATABASE_URL="mongodb+srv://your_username:your_password@your_cluster.mongodb.net/realestate?retryWrites=true&w=majority"
+   JWT_SECRET_KEY=your_jwt_secret_key_here
    NODE_ENV=development
    ```
+   
+   ⚠️ **Important**: Replace `your_username`, `your_password`, and `your_cluster` with your actual MongoDB Atlas credentials.
 
 3. **Verify Prisma connection:**
    ```bash
